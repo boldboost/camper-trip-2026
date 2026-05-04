@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>🚐 Skopje–Valencia Camper Trip · Jun 11 – Jul 2, 2026</title>
+<style>
+  :root {
+    --primary: #2c5282;
+    --accent: #d69e2e;
+    --bg: #f7fafc;
+    --card: #ffffff;
+    --text: #1a202c;
+    --muted: #718096;
+    --border: #e2e8f0;
+    --success: #38a169;
+    --warning: #dd6b20;
+    --danger: #e53e3e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--primary), #4a7bc8);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  header h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+  header .subtitle { opacity: 0.95; font-size: 0.9rem; }
+  header .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  header .stat { background: rgba(255,255,255,0.15); padding: 0.6rem; border-radius: 8px; text-align: center; }
+  header .stat-value { font-size: 1.4rem; font-weight: 700; display: block; }
+  header .stat-label { font-size: 0.75rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  nav {
+    background: var(--card);
+    padding: 0.75rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  nav a {
+    padding: 0.4rem 0.8rem;
+    background: var(--bg);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  nav a:hover { background: var(--primary); color: white; }
+
+  section {
+    background: var(--card);
+    padding: 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  h2 {
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  h3 { color: var(--primary); margin: 1rem 0 0.5rem; font-size: 1rem; }
+
+  .stops-grid {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .stop-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.9rem;
+    background: var(--card);
+    transition: box-shadow 0.2s, transform 0.2s;
+    border-left: 5px solid var(--primary);
+  }
+  .stop-card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .stop-card.locked { border-left-color: var(--success); }
+
+  .stop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .stop-title {
+    flex: 1 1 auto;
+    min-width: 200px;
+  }
+  .stop-num {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-right: 0.4rem;
+  }
+  .stop-name { font-weight: 700; font-size: 1.05rem; display: inline; }
+  .stop-meta {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+  }
+  .stop-price {
+    background: var(--accent);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .stop-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+  }
+  @media (min-width: 768px) {
+    .stop-body { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .stop-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+  .stop-detail .icon { color: var(--primary); flex-shrink: 0; width: 1.2rem; text-align: center; }
+  .stop-detail a { color: var(--primary); text-decoration: none; word-break: break-word; }
+  .stop-detail a:hover { text-decoration: underline; }
+
+  .stop-activity {
+    background: var(--bg);
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    border-left: 3px solid var(--accent);
+  }
+  .stop-activity strong { color: var(--primary); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  th, td {
+    padding: 0.6rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: var(--bg);
+    font-weight: 600;
+    color: var(--primary);
+  }
+  td.right, th.right { text-align: right; }
+  tr.total { background: var(--bg); font-weight: 700; }
+  tr.total td { border-top: 2px solid var(--primary); }
+
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) {
+    .budget-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .checklist {
+    list-style: none;
+    padding: 0;
+  }
+  .checklist li {
+    padding: 0.4rem 0 0.4rem 1.8rem;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 0.4rem;
+    top: 0.4rem;
+    font-size: 1.1rem;
+    color: var(--primary);
+  }
+
+  .booking-list {
+    list-style: none;
+    counter-reset: book-counter;
+    padding: 0;
+  }
+  .booking-list li {
+    counter-increment: book-counter;
+    padding: 0.5rem 0 0.5rem 2.2rem;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .booking-list li::before {
+    content: counter(book-counter);
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    background: var(--primary);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+  .booking-list li.urgent { background: rgba(221, 107, 32, 0.08); padding-right: 0.5rem; padding-left: 2.4rem; border-radius: 6px; margin: 0.2rem 0; }
+  .booking-list li.urgent::before { background: var(--warning); }
+
+  .badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.3rem;
+  }
+  .badge-locked { background: var(--success); color: white; }
+  .badge-warn { background: var(--warning); color: white; }
+  .badge-flag { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+
+  .fuel-table {
+    overflow-x: auto;
+  }
+
+  .alert {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin: 0.75rem 0;
+    border-left: 4px solid;
+  }
+  .alert-info { background: #ebf8ff; border-color: var(--primary); }
+  .alert-warn { background: #fffaf0; border-color: var(--warning); }
+  .alert-danger { background: #fff5f5; border-color: var(--danger); }
+
+  details {
+    background: var(--bg);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    margin: 0.4rem 0;
+  }
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--primary);
+    user-select: none;
+  }
+  details[open] summary { margin-bottom: 0.5rem; }
+
+  .country-flag { font-size: 1.1em; margin-right: 0.2em; }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 1.5rem 0;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+    nav { display: none; }
+    .stop-card:hover { transform: none; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🚐 Skopje → Valencia → Skopje</h1>
+  <div class="subtitle">Family camper trip · 2 adults + 2 kids (9, 12) · Jun 11 → Jul 2, 2026</div>
+  <div class="stats">
+    <div class="stat"><span class="stat-value">22</span><span class="stat-label">Days</span></div>
+    <div class="stat"><span class="stat-value">21</span><span class="stat-label">Nights</span></div>
+    <div class="stat"><span class="stat-value">~6,000</span><span class="stat-label">km</span></div>
+    <div class="stat"><span class="stat-value">12</span><span class="stat-label">Stops</span></div>
+    <div class="stat"><span class="stat-value">€6,782</span><span class="stat-label">Est. Total</span></div>
+  </div>
+</header>
+
+<nav>
+  <a href="#stops">📍 Stops</a>
+  <a href="#daytrips">🎫 Day Trips</a>
+  <a href="#budget">💰 Budget</a>
+  <a href="#fuel">⛽ Fuel</a>
+  <a href="#booking">📋 Booking</a>
+  <a href="#prep">⚙️ Prep</a>
+  <a href="#camper">🚐 Camper</a>
+</nav>
+
+<!-- ============== STOPS ============== -->
+<section id="stops">
+  <h2>📍 Stops · all 12 locked</h2>
+  <div class="stops-grid">
+
+    <!-- Stop 1 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">1</span>
+          <span class="stop-name">Camping Zasavica</span>
+          <span class="badge badge-locked">LOCKED</span>
+          <div class="stop-meta">🇷🇸 Zasavica II, Serbia · <strong>Jun 11</strong> · 1 night · drive 513 km / 5h10</div>
+        </div>
+        <div class="stop-price">€40</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://camping-zasavica.rs/" target="_blank">camping-zasavica.rs</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/search/?api=1&query=Camping+Zasavica+Serbia" target="_blank">Google Maps</a></div>
+        <div class="stop-detail"><span class="icon">✉️</span><a href="mailto:markomarevuksa@gmail.com">markomarevuksa@gmail.com</a></div>
+        <div class="stop-detail"><span class="icon">📞</span><a href="tel:+381649359517">+381 64 935 9517</a></div>
+      </div>
+      <div class="stop-activity"><strong>Vibe:</strong> Special Nature Reserve, beavers, Mangulica pigs, Balkan donkeys, sunset Sava boat tour. Spotless hotel-grade sanitary.</div>
+    </div>
+
+    <!-- Stop 2 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">2</span>
+          <span class="stop-name">Camp Medveja</span>
+          <span class="badge badge-locked">LOCKED</span>
+          <div class="stop-meta">🇭🇷 Lovran/Mošćenička, Croatia · <strong>Jun 12–13</strong> · 2 nights · drive 575 km / 6h30</div>
+        </div>
+        <div class="stop-price">€150</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://www.liburnia.hr/en/campsite-and-holiday-resort-medveja" target="_blank">liburnia.hr</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/search/?api=1&query=Camp+Medveja+Lovran+Croatia" target="_blank">Google Maps</a></div>
+        <div class="stop-detail"><span class="icon">✉️</span><a href="mailto:reservations@liburnia.hr">reservations@liburnia.hr</a></div>
+        <div class="stop-detail"><span class="icon">📞</span><a href="tel:+38551710444">+385 51 710 444</a></div>
+      </div>
+      <div class="stop-activity"><strong>Vibe:</strong> Blue Flag pebble beach across the road, pool, kids' club, walk to Lovran town for gelato. ⚠️ Confirm 7m pitch when booking.</div>
+    </div>
+
+    <!-- Stop 3 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">3</span>
+          <span class="stop-name">Camping Fusina + Venice 🚢</span>
+          <span class="badge badge-locked">LOCKED</span>
+          <div class="stop-meta">🇮🇹 Fusina-Malcontenta, Italy · <strong>Jun 14</strong> · 1 night · drive 280 km / 3h30</div>
+        </div>
+        <div class="stop-price">€94</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://www.campingfusina.com/en/" target="_blank">campingfusina.com</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/search/?api=1&query=Camping+Fusina+Venice" target="_blank">Google Maps</a></div>
+        <div class="stop-detail"><span class="icon">🎫</span><a href="https://be.bookingexpert.it/book/home/index?layout=15907&lang=en" target="_blank">BookingExpert (free cancel until Jun 7)</a></div>
+        <div class="stop-detail"><span class="icon">📞</span><a href="tel:+390415470055">+39 041 547 0055</a></div>
+      </div>
+      <div class="stop-activity"><strong>Day Trip:</strong> Venice via on-site ferry to Zattere, 20 min, last back 22:30. €15 ad / €8 ch RT = €46 family. Venice access fee waived for guests. <strong>BOOK FIRST</strong> — free cancellation = zero risk.</div>
+    </div>
+
+    <!-- Stop 4 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">4</span>
+          <span class="stop-name">Campeggio Rivabella + Milano 🚄</span>
+          <span class="badge badge-locked">LOCKED</span>
+          <div class="stop-meta">🇮🇹 Lecco, Italy · <strong>Jun 15–16</strong> · 2 nights · drive 320 km / 3h30</div>
+        </div>
+        <div class="stop-price">€251</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://www.rivabellalecco.it/en" target="_blank">rivabellalecco.it</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/search/?api=1&query=Campeggio+Rivabella+Lecco" target="_blank">Google Maps</a></div>
+        <div class="stop-detail"><span class="icon">✉️</span><a href="mailto:rivabella@rivabellalecco.it">rivabella@rivabellalecco.it</a></div>
+      </div>
+      <div class="stop-activity">€110 camp + €141 Milano day. <strong>Day Trip:</strong> Lecco → Milano Centrale, 40 min direct train, €5.20 ea, family RT €41. Highlights: Duomo, Galleria, Sforza Castle, Navigli.</div>
+    </div>
+
+    <!-- Stop 5 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">5</span>
+          <span class="stop-name">Camping Por la Mar + Monaco 🎰</span>
+          <span class="badge badge-locked">LOCKED</span>
+          <div class="stop-meta">🇮🇹 Latte di Ventimiglia, Italy · <strong>Jun 17</strong> · 1 night · drive 410 km / 5h</div>
+        </div>
+        <div class="stop-price">€94</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://campingporlamar.com/en/" target="_blank">campingporlamar.com</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/search/?api=1&query=Camping+Por+la+Mar+Ventimiglia" target="_blank">Google Maps</a></div>
+        <div class="stop-detail"><span class="icon">📞</span><a href="tel:+393331352239">+39 333 1352239</a></div>
+      </div>
+      <div class="stop-activity">€54 camp + €40 Monaco train. <strong>Day Trip:</strong> Bus to Ventimiglia FS, train 32 min to Monaco-Monte Carlo, €5/person, family RT €40. Beach 100m from camp. Highlights: Casino, Place du Casino, Port Hercule.</div>
+    </div>
+
+    <!-- Stop 6 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">6</span>
+          <span class="stop-name">Camping Le Floride 🏊</span>
+          <span class="badge badge-locked">LOCKED</span>
+          <div class="stop-meta">🇫🇷 Le Barcarès, France · <strong>Jun 18–19</strong> · 2 nights · drive 510 km / 5h15 (incl Monaco visit)</div>
+        </div>
+        <div class="stop-price">€90</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://floride.fr/en/" target="_blank">floride.fr</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/search/?api=1&query=Camping+Le+Floride+Le+Barcares" target="_blank">Google Maps</a></div>
+        <div class="stop-detail"><span class="icon">🎫</span><span>Book via Ciela system on official site</span></div>
+      </div>
+      <div class="stop-activity"><strong>Vibe:</strong> 4,700m² aquapark (heated indoor pool, jacuzzis, big slides, lazy river, pentagliss). 100m to Mediterranean beach via secure gate. Accepts >5.5m motorhomes no length surcharge.</div>
+    </div>
+
+    <!-- Stop 7 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">7</span>
+          <span class="stop-name">Camping Puzol — Valencia 🏖️</span>
+          <span class="badge badge-locked">LOCKED · 6 NIGHTS</span>
+          <div class="stop-meta">🇪🇸 Cami Rio Turia 3, 46530 Puçol, Valencia, Spain · <strong>Jun 20–25</strong> · 6 nights · drive 470 km / 5h</div>
+        </div>
+        <div class="stop-price">€300</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://www.campingpuzol.com/en/" target="_blank">campingpuzol.com</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/place/Camping+Puzol/@39.6054,-0.2692,17z" target="_blank">Google Maps (39.6054, -0.2692)</a></div>
+        <div class="stop-detail"><span class="icon">🎫</span><a href="https://thelisresa.webcamp.fr/?camping=puzol46&lang=en" target="_blank">Thelisresa booking</a></div>
+        <div class="stop-detail"><span class="icon">📞</span><a href="tel:+34961421527">+34 96 142 15 27</a></div>
+      </div>
+      <div class="stop-activity"><strong>Beach:</strong> ~9 min walk (650m) through Puçol Platja residential streets to Blue Flag Platja de Puçol. (NOT 100m — official site marketing overstates this; verified via Google Maps walking route.) No road crossing risks; quiet residential side-streets. <br><strong>Day Trip:</strong> Renfe Cercanías C-6 from Puçol station → València Nord, 30–35 min hourly, ~€2.50/adult, kids free. <strong>See in Valencia:</strong> Oceanogràfic (book ahead), City of Arts &amp; Sciences, Old Town + Mercado Central, Turia Park (bike), Bioparc, Albufera + paella in El Palmar. <strong>Bonus:</strong> Sagunto castle 5 min by Cercanías opposite direction. Price includes cancellation insurance.</div>
+    </div>
+
+    <!-- Stop 8 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">8</span>
+          <span class="stop-name">Wheels Rest Barcelona 🔒</span>
+          <span class="badge badge-locked">LOCKED</span>
+          <div class="stop-meta">🇪🇸 Passeig de Valldaura 15, Barcelona · <strong>Jun 26</strong> · 1 night · drive 350 km / 3h30</div>
+        </div>
+        <div class="stop-price">€45</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://park4night.com/en/place/598620" target="_blank">park4night.com/598620</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/search/?api=1&query=Wheels+Rest+Barcelona+Passeig+de+Valldaura+15" target="_blank">Google Maps</a></div>
+        <div class="stop-detail"><span class="icon">🅿️</span><span>Gated 24/7, CCTV, gate codes after 21:00</span></div>
+      </div>
+      <div class="stop-activity"><strong>Day Trip:</strong> 1-min walk to Metro Valldaura (L3) → Pl. Catalunya 20 min direct. ~€25 family day pass. Highlights: Sagrada Familia exterior, Las Ramblas, Boqueria market, Park Güell viewpoint. <span class="badge badge-warn">⚠️ ZBE</span> Register plate at zbe.barcelona 48h before — fines €100+.</div>
+    </div>
+
+    <!-- Stop 9 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">9</span>
+          <span class="stop-name">Camping du Garlaban + Marseille 🚉</span>
+          <span class="badge badge-locked">LOCKED</span>
+          <div class="stop-meta">🇫🇷 Aubagne, France · <strong>Jun 27</strong> · 1 night · drive 500 km / 5h</div>
+        </div>
+        <div class="stop-price">€40</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://www.youcamp-marseille.fr/en/" target="_blank">youcamp-marseille.fr</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/search/?api=1&query=Camping+du+Garlaban+Aubagne" target="_blank">Google Maps</a></div>
+        <div class="stop-detail"><span class="icon">🌲</span><span>Gated 3★ pine forest, safe Aubagne suburb</span></div>
+      </div>
+      <div class="stop-activity"><strong>Day Trip:</strong> Free shuttle to Aubagne Gare → TER 15 min to Marseille St-Charles, 4-6 trains/hr. ~€55 family RT + dinner. Highlights: Vieux-Port + Notre-Dame de la Garde funicular for sunset + dinner at Vieux-Port. ⚠️ Avoid northern districts and L'Estaque overnight.</div>
+    </div>
+
+    <!-- Stop 10 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">10</span>
+          <span class="stop-name">Campeggio Obelisco + Trieste 🚋</span>
+          <span class="badge badge-locked">LOCKED</span>
+          <div class="stop-meta">🇮🇹 Opicina (above Trieste), Italy · <strong>Jun 28</strong> · 1 night · drive 900 km / 10h ⚠️</div>
+        </div>
+        <div class="stop-price">€28</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://www.campeggiobelisco.it/" target="_blank">campeggiobelisco.it</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/search/?api=1&query=Campeggio+Obelisco+Opicina+Trieste" target="_blank">Google Maps</a></div>
+        <div class="stop-detail"><span class="icon">⚠️</span><span>Call to confirm 6.95m pitch fits (terraced site)</span></div>
+      </div>
+      <div class="stop-activity"><strong>Day Trip (optional, after 10h drive):</strong> 5-min walk to historic Tram 2 (Opicina line, reopened 2025) → Piazza Oberdan 20 min scenic ride, €1.50 each way. Highlights: Piazza Unità d'Italia (largest seafront square in Europe).</div>
+    </div>
+
+    <!-- Stop 11 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">11</span>
+          <span class="stop-name">Camp Viter — Makarska Riviera 🏖️</span>
+          <span class="badge badge-locked">LOCKED · 2 NIGHTS</span>
+          <div class="stop-meta">🇭🇷 Zaostrog, Croatia · <strong>Jun 29–30</strong> · 2 nights · drive 570 km / 6h30</div>
+        </div>
+        <div class="stop-price">€165</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://camp-viter.com/" target="_blank">camp-viter.com</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/search/?api=1&query=Camp+Viter+Zaostrog" target="_blank">Google Maps</a></div>
+        <div class="stop-detail"><span class="icon">✉️</span><a href="mailto:info@camp-viter.com">info@camp-viter.com</a></div>
+        <div class="stop-detail"><span class="icon">📞</span><a href="tel:+385991650606">+385 99 1650 606</a></div>
+      </div>
+      <div class="stop-activity"><strong>Vibe:</strong> Front-line sea pitch on Makarska Riviera. Beach rest day. Optional drive 25 min N to Brela's Punta Rata (Europe's #1 pebble beach). Optional Split day-trip by FlixBus 1h55 (€7-14/person, ~9h round trip — probably skip).</div>
+    </div>
+
+    <!-- Stop 12 -->
+    <div class="stop-card locked">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num">12</span>
+          <span class="stop-name">MCM Camping &amp; Resort 🏖️</span>
+          <span class="badge badge-locked">LOCKED</span>
+          <div class="stop-meta">🇲🇪 Doni Štoj, Ulcinj, Montenegro · <strong>Jul 1</strong> · 1 night · drive 290 km / 5h45 + 2 borders</div>
+        </div>
+        <div class="stop-price">€60</div>
+      </div>
+      <div class="stop-body">
+        <div class="stop-detail"><span class="icon">🌐</span><a href="https://www.mcmcamping.me/" target="_blank">mcmcamping.me</a></div>
+        <div class="stop-detail"><span class="icon">📍</span><a href="https://www.google.com/maps/search/?api=1&query=MCM+Camping+Resort+Ulcinj+Doni+Stoj" target="_blank">Google Maps</a></div>
+        <div class="stop-detail"><span class="icon">🎫</span><a href="https://www.pitchup.com/en-us/campsites/montenegro/coastal/ulcinj/doni_stoj/mcm_camping/" target="_blank">Pitchup booking</a></div>
+      </div>
+      <div class="stop-activity"><strong>Vibe:</strong> Direct sandy beach (Velika Plaža), pool, kids' playground, full motorhome service. ⚠️ Bring 220V surge protector — Montenegro EHU can be flaky.</div>
+    </div>
+
+    <!-- Final drive -->
+    <div class="stop-card" style="border-left-color: var(--muted);">
+      <div class="stop-header">
+        <div class="stop-title">
+          <span class="stop-num" style="background: var(--muted);">→</span>
+          <span class="stop-name">Drive home to Skopje 🏠</span>
+          <div class="stop-meta">🇲🇪→🇦🇱→🇽🇰→🇲🇰 · <strong>Jul 2</strong> · 340 km / 7h + 3 borders</div>
+        </div>
+        <div class="stop-price" style="background: var(--muted);">END</div>
+      </div>
+      <div class="stop-activity">Borders: Montenegro→Albania (Sukobin/Murićani) → Albania→Kosovo (Morinë/Vërmicë new highway) → Kosovo→N. Macedonia (Bllacë/Hani i Elezit). Budget +1.5h for borders. Carry passports, camper docs, green card insurance for non-EU.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== DAY TRIPS ============== -->
+<section id="daytrips">
+  <h2>🎫 Day trips quick reference</h2>
+  <table>
+    <thead>
+      <tr><th>Trip</th><th>From</th><th>Transport</th><th class="right">Family RT</th><th>Highlights</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Venice</strong></td><td>Camping Fusina</td><td>Campsite ferry → Zattere 20 min</td><td class="right">€46</td><td>St Mark's, Rialto, Dorsoduro</td></tr>
+      <tr><td><strong>Milano</strong></td><td>Lecco station</td><td>Train direct 40 min</td><td class="right">€41</td><td>Duomo, Galleria, Sforza Castle, Navigli</td></tr>
+      <tr><td><strong>Monaco</strong></td><td>Por la Mar</td><td>Bus + train 32 min</td><td class="right">€40</td><td>Casino, Place du Casino, Port Hercule</td></tr>
+      <tr><td><strong>Valencia</strong> (multi-day)</td><td>Camping Puzol</td><td>Renfe Cercanías C-6 30 min hourly</td><td class="right">~€10/day</td><td>Oceanogràfic, City of Arts, Old Town, Bioparc, Albufera</td></tr>
+      <tr><td><strong>Sagunto</strong> (bonus)</td><td>Camping Puzol</td><td>Renfe C-6 opposite direction, 5 min</td><td class="right">€3.50</td><td>Castle + Roman amphitheatre — half-day</td></tr>
+      <tr><td><strong>Barcelona</strong></td><td>Wheels Rest</td><td>Metro Valldaura L3 → Pl. Catalunya 20 min</td><td class="right">~€25</td><td>Sagrada Familia, Las Ramblas, Park Güell</td></tr>
+      <tr><td><strong>Marseille</strong></td><td>Camp Garlaban (Aubagne)</td><td>Free shuttle + TER 15 min to St-Charles</td><td class="right">~€55</td><td>Vieux-Port, Notre-Dame de la Garde sunset</td></tr>
+      <tr><td><strong>Trieste</strong> (optional)</td><td>Campeggio Obelisco</td><td>Tram 2 scenic 20 min</td><td class="right">~€35</td><td>Piazza Unità d'Italia, Borgo Teresiano</td></tr>
+      <tr><td><strong>Brela Punta Rata</strong> (optional)</td><td>Camp Viter</td><td>Drive 25 min N</td><td class="right">fuel</td><td>Europe's #1 pebble beach</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============== BUDGET ============== -->
+<section id="budget">
+  <h2>💰 Budget breakdown</h2>
+  <div class="budget-grid">
+    <div>
+      <h3>Stops (camping + day-trip transport)</h3>
+      <table>
+        <tbody>
+          <tr><td>1. Zasavica</td><td class="right">€40</td></tr>
+          <tr><td>2. Medveja (2n)</td><td class="right">€150</td></tr>
+          <tr><td>3. Fusina + Venice ferry</td><td class="right">€94</td></tr>
+          <tr><td>4. Rivabella + Milano day</td><td class="right">€251</td></tr>
+          <tr><td>5. Por la Mar + Monaco train</td><td class="right">€94</td></tr>
+          <tr><td>6. Le Floride (2n)</td><td class="right">€90</td></tr>
+          <tr><td>7. Puzol Valencia (6n)</td><td class="right">€300</td></tr>
+          <tr><td>8. Wheels Rest BCN</td><td class="right">€45</td></tr>
+          <tr><td>9. Garlaban (Marseille)</td><td class="right">€40</td></tr>
+          <tr><td>10. Obelisco (Trieste)</td><td class="right">€28</td></tr>
+          <tr><td>11. Camp Viter (2n)</td><td class="right">€165</td></tr>
+          <tr><td>12. MCM Ulcinj</td><td class="right">€60</td></tr>
+          <tr class="total"><td>STOPS SUBTOTAL</td><td class="right">€1,357</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Fixed + variable costs</h3>
+      <table>
+        <tbody>
+          <tr><td>Camper rental (€600 paid)</td><td class="right">€2,000</td></tr>
+          <tr><td>Fuel (~870L × €1.75 avg)</td><td class="right">€1,520</td></tr>
+          <tr><td>Tolls + Slovenia vignette</td><td class="right">€340</td></tr>
+          <tr><td>Tourist tax (IT + ES)</td><td class="right">€50</td></tr>
+          <tr><td>Food (22d × €65 family)</td><td class="right">€1,400</td></tr>
+          <tr><td>BCN/Marseille/Trieste extras</td><td class="right">€115</td></tr>
+          <tr class="total"><td>FIXED SUBTOTAL</td><td class="right">€5,425</td></tr>
+        </tbody>
+      </table>
+      <table style="margin-top: 1rem;">
+        <tbody>
+          <tr class="total" style="background: var(--accent); color: white;"><td>GRAND TOTAL ESTIMATE</td><td class="right">€6,782</td></tr>
+        </tbody>
+      </table>
+      <div class="alert alert-warn">~€282 over original €6,500 ceiling. Absorbed mainly by Lecco-Milano day, Monaco overnight, and Languedoc 2nd night. Food/visit trims can reclaim some.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FUEL ============== -->
+<section id="fuel">
+  <h2>⛽ Fuel strategy — country-by-country</h2>
+  <p>Total ~870L needed. Smart strategy = €1.75/L weighted avg.</p>
+  <div class="fuel-table">
+    <table>
+      <thead>
+        <tr><th>Country</th><th class="right">Price €/L</th><th>Strategy</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>🇲🇰 Macedonia</td><td class="right"><strong>1.48</strong> (cheapest)</td><td>Fill at Skopje pickup (Makpetrol/OKTA) + final top-off before return</td></tr>
+        <tr><td>🇷🇸 Serbia</td><td class="right">1.87</td><td>NIS Petrol/Gazprom; mandatory transit</td></tr>
+        <tr><td>🇭🇷 Croatia</td><td class="right"><strong>1.96</strong> (most expensive)</td><td><strong>MINIMIZE</strong>; use Crodux/Tifon (~3¢ under INA/Shell)</td></tr>
+        <tr><td>🇸🇮 Slovenia</td><td class="right">1.87</td><td>Sežana before Italy (cheaper than Italy hwy by €0.24/L)</td></tr>
+        <tr><td>🇮🇹 Italy</td><td class="right">1.75 off-hwy / 2.11 hwy</td><td><strong>NEVER fill on autostrada;</strong> Q8easy / IP / Tamoil non-branded</td></tr>
+        <tr><td>🇫🇷 France</td><td class="right">1.70 supermarket / 2.16 hwy</td><td>Carrefour or E.Leclerc only — €0.40+/L cheaper than autoroute</td></tr>
+        <tr><td>🇪🇸 Spain</td><td class="right">1.74</td><td>Ballenoil/Plenoil; fill before crossing back to France</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============== BOOKING ============== -->
+<section id="booking">
+  <h2>📋 Booking action items (in this order)</h2>
+  <ol class="booking-list">
+    <li class="urgent"><strong>Camping Fusina</strong> (Jun 14) — book NOW via <a href="https://be.bookingexpert.it/book/home/index?layout=15907&lang=en" target="_blank">BookingExpert</a>. <strong>Free cancellation until Jun 7 = zero risk to lock first.</strong></li>
+    <li><strong>Camping Puzol</strong> (Jun 20–25, 6n) — book direct via <a href="https://thelisresa.webcamp.fr/?camping=puzol46&lang=en" target="_blank">Thelisresa</a>. Verify 16A pitch by phone <a href="tel:+34961421527">+34 96 142 15 27</a>.</li>
+    <li><strong>Camp Medveja</strong> (Jun 12–13) — email <a href="mailto:reservations@liburnia.hr">reservations@liburnia.hr</a> or call <a href="tel:+38551710444">+385 51 710 444</a>. Confirm pitch ≥7m.</li>
+    <li><strong>Camp Viter</strong> (Jun 29–30) — email <a href="mailto:info@camp-viter.com">info@camp-viter.com</a> or call <a href="tel:+385991650606">+385 99 1650 606</a>. Confirm front-line pitch ≥7m, 16A, 12yo charge.</li>
+    <li class="urgent"><strong>Wheels Rest Barcelona</strong> (Jun 26) — book via <a href="https://park4night.com/en/place/598620" target="_blank">Park4Night listing</a>. <strong>Also: register plate at <a href="https://zbe.barcelona" target="_blank">zbe.barcelona</a> 48h before arrival (free, mandatory).</strong></li>
+    <li><strong>Campeggio Rivabella Lecco</strong> (Jun 15–16) — email <a href="mailto:rivabella@rivabellalecco.it">rivabella@rivabellalecco.it</a>, request lakefront pitch ≥7m.</li>
+    <li><strong>Camping Le Floride</strong> (Jun 18–19) — book via <a href="https://floride.fr/en/" target="_blank">floride.fr</a> Ciela system. Verify 16A.</li>
+    <li><strong>Camping du Garlaban</strong> (Jun 27) — book via <a href="https://www.youcamp-marseille.fr/en/" target="_blank">youcamp-marseille.fr</a>.</li>
+    <li><strong>Camping Por la Mar</strong> (Jun 17) — phone <a href="tel:+393331352239">+39 333 1352239</a>. Confirm Large pitch fits 6.95m.</li>
+    <li><strong>Campeggio Obelisco</strong> (Jun 28) — phone to confirm 6.95m pitch fits (terraced site).</li>
+    <li><strong>MCM Camping</strong> (Jul 1) — book via <a href="https://www.pitchup.com/en-us/campsites/montenegro/coastal/ulcinj/doni_stoj/mcm_camping/" target="_blank">Pitchup</a> or direct.</li>
+    <li><strong>Camping Zasavica</strong> (Jun 11) — email <a href="mailto:markomarevuksa@gmail.com">markomarevuksa@gmail.com</a> or call <a href="tel:+381649359517">+381 64 935 9517</a>. Walk-up usually fine but confirm.</li>
+  </ol>
+</section>
+
+<!-- ============== PREP ============== -->
+<section id="prep">
+  <h2>⚙️ Pre-trip preparation checklist</h2>
+  <ul class="checklist">
+    <li><strong>Register camper plate at <a href="https://zbe.barcelona" target="_blank">zbe.barcelona</a></strong> 48h before Jun 26 (free, mandatory)</li>
+    <li>Buy <strong>steering-wheel club + cab-door deadbolt</strong> (Heosafe / HEOSolution, ~€60–80)</li>
+    <li>Buy <strong>CO + gas alarm</strong> for sleeping in tight aires</li>
+    <li>Buy <strong>220V surge protector</strong> (essential for Montenegro EHU)</li>
+    <li><strong>Photograph VIN, plates, insurance, passports</strong> — keep paper copies in different bag than originals</li>
+    <li><strong>Verify green card insurance</strong> covers Albania, Kosovo, Montenegro (non-EU)</li>
+    <li><strong>Order ACSI CampingCard 2026</strong> from <a href="https://www.acsi.eu/en" target="_blank">acsi.eu</a> (~€17 — useful at some Italy/France/Spain stops)</li>
+    <li>Install apps: <strong>Park4Night</strong>, <strong>Sygic Truck &amp; Caravan GPS</strong>, <strong>ACSI Campsites Europe</strong></li>
+    <li>In <strong>Sygic</strong>: enter dimensions <strong>6.95 × 2.32 × 3.15 m, 3.5T</strong> before driving</li>
+    <li>Confirm rental has: <strong>leveling blocks</strong>, <strong>schuko/CEE adapter</strong>, EU-wide road assistance</li>
+    <li>Print this overview page for offline reference</li>
+  </ul>
+
+  <h3>Anti-theft tips for the trip</h3>
+  <ul class="checklist">
+    <li><strong>Empty the cab</strong> before any city visit — no sat-nav, cables, sunglasses, bags visible</li>
+    <li>Lock <strong>habitation door while sleeping</strong> even inside gated aires</li>
+    <li><strong>Park nose-out</strong> so you can drive away fast if needed</li>
+    <li><strong>Marseille</strong>: avoid 13–16e arrondissements + L'Estaque overnight (documented break-in zones)</li>
+    <li><strong>Barcelona</strong>: never overnight at Pl. Catalunya P+R, Forum, Diagonal Mar lots — smashed-window reports</li>
+  </ul>
+</section>
+
+<!-- ============== CAMPER ============== -->
+<section id="camper">
+  <h2>🚐 Camper specs (rent-a-camper.mk)</h2>
+  <table>
+    <tbody>
+      <tr><td><strong>Length</strong></td><td>6.95 m</td></tr>
+      <tr><td><strong>Width</strong></td><td>2.32 m</td></tr>
+      <tr><td><strong>Height</strong></td><td>3.15 m</td></tr>
+      <tr><td><strong>Empty weight</strong></td><td>2,860 kg</td></tr>
+      <tr><td><strong>Max payload</strong></td><td>640 kg</td></tr>
+      <tr><td><strong>Max total weight</strong></td><td><strong>3,500 kg = under 3.5T</strong> (car-rate tolls, standard car license)</td></tr>
+      <tr><td><strong>Beds / seats</strong></td><td>7 / 7 (bunks in rear, ideal for kids 9 &amp; 12)</td></tr>
+      <tr><td><strong>Chassis</strong></td><td>Single-axle Fiat Ducato style, fiberglass body</td></tr>
+      <tr><td><strong>Fuel</strong></td><td>Diesel ~15 L/100 km · 80L tank assumed (verify at pickup)</td></tr>
+    </tbody>
+  </table>
+  <div class="alert alert-info"><strong>Length matters:</strong> Some campsites have ≤6.8m max pitch — verify pitch length when booking each stop. Already excluded from this plan: Camping Opatija (Ičići, 6.8m max), Beausoleil aire La Provençale (6.5m max).</div>
+</section>
+
+<footer>
+  Generated for personal use · all data verified via campsite booking systems and official sources May 2026 · prices subject to change at booking
+</footer>
+
+</body>
+</html>
