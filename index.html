@@ -106,7 +106,8 @@
     border-left: 5px solid var(--primary);
   }
   .stop-card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.08); transform: translateY(-2px); }
-  .stop-card.locked { border-left-color: var(--success); }
+  .stop-card.booked { border-left-color: var(--success); }
+  .stop-card.locked { border-left-color: #d4a017; }
 
   .stop-header {
     display: flex;
@@ -263,7 +264,8 @@
     font-weight: 600;
     margin-left: 0.3rem;
   }
-  .badge-locked { background: var(--success); color: white; }
+  .badge-booked { background: var(--success); color: white; }
+  .badge-locked { background: #d4a017; color: white; }
   .badge-warn { background: var(--warning); color: white; }
   .badge-flag { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
 
@@ -338,17 +340,17 @@
 
 <!-- ============== STOPS ============== -->
 <section id="stops">
-  <h2>📍 Stops · all 12 locked</h2>
+  <h2>📍 Stops · 1 booked · 11 locked</h2>
   <div class="stops-grid">
 
     <!-- Stop 1 -->
-    <div class="stop-card locked">
+    <div class="stop-card booked">
       <div class="stop-header">
         <div class="stop-title">
           <span class="stop-num">1</span>
           <span class="stop-name">Camping Zasavica</span>
-          <span class="badge badge-locked">LOCKED</span>
-          <div class="stop-meta">🇷🇸 Zasavica II, Serbia · <strong>Jun 11</strong> · 1 night · drive 513 km / 5h10</div>
+          <span class="badge badge-booked">BOOKED</span>
+          <div class="stop-meta">🇷🇸 Zasavica II, Serbia · <strong>Jun 11 → Jun 12</strong> · 1 night · drive 513 km / 5h10</div>
         </div>
         <div class="stop-price">€40</div>
       </div>
@@ -368,7 +370,7 @@
           <span class="stop-num">2</span>
           <span class="stop-name">Camp Medveja</span>
           <span class="badge badge-locked">LOCKED</span>
-          <div class="stop-meta">🇭🇷 Lovran/Mošćenička, Croatia · <strong>Jun 12–13</strong> · 2 nights · drive 575 km / 6h30</div>
+          <div class="stop-meta">🇭🇷 Lovran/Mošćenička, Croatia · <strong>Jun 12 → Jun 14</strong> · 2 nights · drive 575 km / 6h30</div>
         </div>
         <div class="stop-price">€150</div>
       </div>
@@ -388,7 +390,7 @@
           <span class="stop-num">3</span>
           <span class="stop-name">Camping Fusina + Venice 🚢</span>
           <span class="badge badge-locked">LOCKED</span>
-          <div class="stop-meta">🇮🇹 Fusina-Malcontenta, Italy · <strong>Jun 14</strong> · 1 night · drive 280 km / 3h30</div>
+          <div class="stop-meta">🇮🇹 Fusina-Malcontenta, Italy · <strong>Jun 14 → Jun 15</strong> · 1 night · drive 280 km / 3h30</div>
         </div>
         <div class="stop-price">€94</div>
       </div>
@@ -408,7 +410,7 @@
           <span class="stop-num">4</span>
           <span class="stop-name">Campeggio Rivabella + Milano 🚄</span>
           <span class="badge badge-locked">LOCKED</span>
-          <div class="stop-meta">🇮🇹 Lecco, Italy · <strong>Jun 15–16</strong> · 2 nights · drive 320 km / 3h30</div>
+          <div class="stop-meta">🇮🇹 Lecco, Italy · <strong>Jun 15 → Jun 17</strong> · 2 nights · drive 320 km / 3h30</div>
         </div>
         <div class="stop-price">€251</div>
       </div>
@@ -427,7 +429,7 @@
           <span class="stop-num">5</span>
           <span class="stop-name">Camping Por la Mar + Monaco 🎰</span>
           <span class="badge badge-locked">LOCKED</span>
-          <div class="stop-meta">🇮🇹 Latte di Ventimiglia, Italy · <strong>Jun 17</strong> · 1 night · drive 410 km / 5h</div>
+          <div class="stop-meta">🇮🇹 Latte di Ventimiglia, Italy · <strong>Jun 17 → Jun 18</strong> · 1 night · drive 410 km / 5h</div>
         </div>
         <div class="stop-price">€94</div>
       </div>
@@ -446,7 +448,7 @@
           <span class="stop-num">6</span>
           <span class="stop-name">Camping Le Floride 🏊</span>
           <span class="badge badge-locked">LOCKED</span>
-          <div class="stop-meta">🇫🇷 Le Barcarès, France · <strong>Jun 18–19</strong> · 2 nights · drive 510 km / 5h15 (incl Monaco visit)</div>
+          <div class="stop-meta">🇫🇷 Le Barcarès, France · <strong>Jun 18 → Jun 20</strong> · 2 nights · drive 510 km / 5h15 (incl Monaco visit)</div>
         </div>
         <div class="stop-price">€90</div>
       </div>
@@ -465,7 +467,7 @@
           <span class="stop-num">7</span>
           <span class="stop-name">Camping Puzol — Valencia 🏖️</span>
           <span class="badge badge-locked">LOCKED · 6 NIGHTS</span>
-          <div class="stop-meta">🇪🇸 Cami Rio Turia 3, 46530 Puçol, Valencia, Spain · <strong>Jun 20–25</strong> · 6 nights · drive 470 km / 5h</div>
+          <div class="stop-meta">🇪🇸 Cami Rio Turia 3, 46530 Puçol, Valencia, Spain · <strong>Jun 20 → Jun 26</strong> · 6 nights · drive 470 km / 5h</div>
         </div>
         <div class="stop-price">€300</div>
       </div>
@@ -485,7 +487,7 @@
           <span class="stop-num">8</span>
           <span class="stop-name">Wheels Rest Barcelona 🔒</span>
           <span class="badge badge-locked">LOCKED</span>
-          <div class="stop-meta">🇪🇸 Passeig de Valldaura 15, Barcelona · <strong>Jun 26</strong> · 1 night · drive 350 km / 3h30</div>
+          <div class="stop-meta">🇪🇸 Passeig de Valldaura 15, Barcelona · <strong>Jun 26 → Jun 27</strong> · 1 night · drive 350 km / 3h30</div>
         </div>
         <div class="stop-price">€45</div>
       </div>
@@ -504,7 +506,7 @@
           <span class="stop-num">9</span>
           <span class="stop-name">Camping du Garlaban + Marseille 🚉</span>
           <span class="badge badge-locked">LOCKED</span>
-          <div class="stop-meta">🇫🇷 Aubagne, France · <strong>Jun 27</strong> · 1 night · drive 500 km / 5h</div>
+          <div class="stop-meta">🇫🇷 Aubagne, France · <strong>Jun 27 → Jun 28</strong> · 1 night · drive 500 km / 5h</div>
         </div>
         <div class="stop-price">€40</div>
       </div>
@@ -523,7 +525,7 @@
           <span class="stop-num">10</span>
           <span class="stop-name">Campeggio Obelisco + Trieste 🚋</span>
           <span class="badge badge-locked">LOCKED</span>
-          <div class="stop-meta">🇮🇹 Opicina (above Trieste), Italy · <strong>Jun 28</strong> · 1 night · drive 900 km / 10h ⚠️</div>
+          <div class="stop-meta">🇮🇹 Opicina (above Trieste), Italy · <strong>Jun 28 → Jun 29</strong> · 1 night · drive 900 km / 10h ⚠️</div>
         </div>
         <div class="stop-price">€28</div>
       </div>
@@ -542,7 +544,7 @@
           <span class="stop-num">11</span>
           <span class="stop-name">Camp Viter — Makarska Riviera 🏖️</span>
           <span class="badge badge-locked">LOCKED · 2 NIGHTS</span>
-          <div class="stop-meta">🇭🇷 Zaostrog, Croatia · <strong>Jun 29–30</strong> · 2 nights · drive 570 km / 6h30</div>
+          <div class="stop-meta">🇭🇷 Zaostrog, Croatia · <strong>Jun 29 → Jul 1</strong> · 2 nights · drive 570 km / 6h30</div>
         </div>
         <div class="stop-price">€165</div>
       </div>
@@ -562,7 +564,7 @@
           <span class="stop-num">12</span>
           <span class="stop-name">MCM Camping &amp; Resort 🏖️</span>
           <span class="badge badge-locked">LOCKED</span>
-          <div class="stop-meta">🇲🇪 Doni Štoj, Ulcinj, Montenegro · <strong>Jul 1</strong> · 1 night · drive 290 km / 5h45 + 2 borders</div>
+          <div class="stop-meta">🇲🇪 Doni Štoj, Ulcinj, Montenegro · <strong>Jul 1 → Jul 2</strong> · 1 night · drive 290 km / 5h45 + 2 borders</div>
         </div>
         <div class="stop-price">€60</div>
       </div>
